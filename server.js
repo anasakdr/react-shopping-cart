@@ -77,6 +77,24 @@ app.post("/api/orders", async(req, res)=>{
   res.send(order);
 });
 
+const User = mongoose.model
+("users",
+ new mongoose.Schema({
+    _id:{type: String, default: shortid.generate},
+    name: String,
+    email: String,
+    password: String,
+}))
+// new User
+
+
+// add product
+app.post("/api/users", async (req, res)=>{
+  const newUser = new User(req.body);
+  const savedUser = await newUser.save();
+  res.send(savedUser)
+})
+
 const port = process.env.PORT || 5000;
 app.listen(port, ()=> console.log("server at http://localhost:5000"));
 

@@ -7,3 +7,6 @@ export const CREATE_ORDER = "CREATE_ORDER";
 export const CLEAR_ORDER = "CLEAR_ORDER";
 export const CLEAR_CART = "CLEAR_CART";
 export const FETCH_ORDERS = "FETCH_ORDERS";
+export const FETCH_USERS = "FETCH_USERS";
+export const CREATE_USER = "CREATE_USER";
+export const CLEAR_USER = "CLEAR_USER";
