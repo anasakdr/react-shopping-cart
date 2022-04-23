@@ -12,8 +12,9 @@ class App extends React.Component {
         <BrowserRouter>
           <div className="grid-container">
             <header>
-              <Link to="/">React Shopping Cart</Link>
-              <Link to="/admin">Admin</Link>
+              <Link className="left" to="/">React Shopping Cart</Link>
+              <Link className="right" to="/admin">Admin</Link>
+              <Link  to="/admin">Login</Link>
             </header>
             <main>
               <Route path="/admin" component={AdminScreen} />
