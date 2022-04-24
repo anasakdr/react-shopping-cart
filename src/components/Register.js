@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../style/register.scoped.css"
 import { connect } from "react-redux";
-import { createUser} from "../actions/registerAction";
+import { createUser, fetchUsers } from "../actions/registerAction";
 class Register extends Component {
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
     constructor(props) {
         super(props);
         this.state = {
@@ -28,15 +31,15 @@ class Register extends Component {
         this.props.createUser(user);
       };
       async handleSubmit() {
-        let result = await axios.get(
-          `http://localhost:3000/user?email=${this.email}`
-        );
-        if (result.status === 200 && result.data.length > 0) {
-          // window.alert("user ist schon existert");
-          this.showToast("user ist schon existert")
-        } else {
-          if (this.passwort === this.passwort_confirm) {
-            if (this.passwort.length >= 8) {
+        // let result = await axios.get(
+        //   `http://localhost:3000/user?email=${this.email}`
+        // );
+        // if (result.status === 200 && result.data.length > 0) {
+        //   // window.alert("user ist schon existert");
+        //   this.showToast("user ist schon existert")
+        // } else {
+        //   if (this.passwort === this.passwort_confirm) {
+        //     if (this.passwort.length >= 8) {
               // let result = await axios.post("http://localhost:3000/user", {
               //   vor_name: this.vor_name,
               //   last_name: this.last_name,
@@ -48,15 +51,15 @@ class Register extends Component {
               // if (result.status === 201) {
               //   // this.showToast("User ist erfolgreisch gelegt")
               //   // localStorage.setItem('user-info', JSON.stringify(result.data) )
-                this.$router.push("/Next");
+                // this.$router.push("/Next");
               //                }
-              } else {
-                 this.showToast("Passwort ist kleiner als 8 stelle")
-              }
-            } else {
-                this.showToast("Passwort ist nicht gleich Passwort confirm")
-            }
-          }
+          //     } else {
+          //        this.showToast("Passwort ist kleiner als 8 stelle")
+          //     }
+          //   } else {
+          //       this.showToast("Passwort ist nicht gleich Passwort confirm")
+          //   }
+          // }
         };
       closeModal = () => {
         this.props.clearUser();
@@ -124,8 +127,10 @@ class Register extends Component {
 }
 export default connect(
     (state) => ({
-      user: state.user,
+      users: state.user,
     }),
-    {  createUser }
+    {  createUser, 
+       fetchUsers, 
+    }
   )(Register);
   

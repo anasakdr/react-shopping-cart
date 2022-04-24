@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import Zoom from "react-reveal/Zoom";
 import { removeFromCart } from "../actions/cartActions";
 import { createOrder, clearOrder } from "../actions/orderActions";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+// import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 class Cart extends Component {
   constructor(props) {
     super(props);
@@ -177,9 +177,9 @@ class Cart extends Component {
                         </li>
                       </ul>
                     </form>
-                    <PayPalScriptProvider options={{ "client-id": "test" }}>
+                    {/* <PayPalScriptProvider options={{ "client-id": "test" }}>
            <PayPalButtons style={{ layout: "horizontal" }} />
-       </PayPalScriptProvider>
+       </PayPalScriptProvider> */}
                   </div>
                 </Fade>
               )}

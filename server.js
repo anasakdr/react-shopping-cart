@@ -69,6 +69,7 @@ app.get("/api/orders", async (req, res)=>{
   res.send(orders);
 })
 
+// new  Order
 app.post("/api/orders", async(req, res)=>{
   if(!req.body.name || !req.body.email || !req.body.address || !req.body.total || !req.body.cartItems){
     return res.send({ message: "Data is required."})
@@ -85,10 +86,8 @@ const User = mongoose.model
     email: String,
     password: String,
 }))
-// new User
 
-
-// add product
+// add User
 app.post("/api/users", async (req, res)=>{
   const newUser = new User(req.body);
   const savedUser = await newUser.save();
